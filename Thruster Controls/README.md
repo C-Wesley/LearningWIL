@@ -18,7 +18,7 @@ These coils are energized following a pattern to make the rotor spin. See diagra
 ![Three Phase Motor Diagram](https://github.com/C-Wesley/LearningWIL/blob/main/Thruster%20Controls/img/3phaseBrushlessMotor.gif)
 
 Example Wiring Diagram: 
-![Example Wiring Diagram](https://github.com/C-Wesley/LearningWIL/blob/main/Thruster%20Controls/imgConnectionDiagram.png)
+![Example Wiring Diagram](https://github.com/C-Wesley/LearningWIL/blob/main/Thruster%20Controls/img/ConnectionDiagram.png)
 
 We don't directly control the three phase connections. Instead we use an ESC. The ESC requires a PWM signal from the microcontroller and power from a battery. We have a wiring harness that allows us to power two ESC's in parallel. 
 
