@@ -10,6 +10,7 @@ The main objectives here are to:
 
 Begin by looking at SD_Card_RW. 
 Then move onto path_parse.
+
 An advanced user may find the SD class and File class API more useful (Located near the bottom of the page): 
 
 https://docs.arduino.cc/libraries/sd/#SD%20class
