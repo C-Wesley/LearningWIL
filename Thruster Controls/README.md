@@ -26,10 +26,10 @@ PWM stands for Pulse Width Modulation. Typically, we don't varry the period of t
 
 It's wants a signal with a 20ms period and a high pulse of between 1100 -1900 microseconds, centered at 1500. That means when we set our PWM to have a high signal for 1500 microseconds, the motors will be turnd off. 
 
-|High Pulse Time|Motor Direction     | 
-|---------------|--------------------|
-| 1475-1525     | OFF                | 
-| 1100-1475     | REVERSE            |
-| 1525-1900     | FORWARD            |
+|High Pulse Time(us)|Motor Direction     | 
+|---------------    |--------------------|
+| 1475-1525         | OFF                | 
+| 1100-1475         | REVERSE            |
+| 1525-1900         | FORWARD            |
 
 
