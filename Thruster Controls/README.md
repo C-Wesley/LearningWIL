@@ -32,6 +32,8 @@ It's wants a signal with a 20ms period and a high pulse of between 1100 -1900 mi
 | 1100-1475         | REVERSE            |
 | 1525-1900         | FORWARD            |
 
+This is the same idea with servo motors: The 90 degrees would coresspond to our thrusters being off. The 180 degreesing is full throttle reverse and the 0 degrees is full throttle forwards. 
+![Servo Motor Control](https://github.com/C-Wesley/LearningWIL/blob/main/Thruster%20Controls/img/RC-Servo-Motor-Control-Signal.png)
 
 
 
