@@ -10,4 +10,19 @@ The main objectives here are to:
 
 Begin by looking at SD_Card_RW. 
 Then move onto path_parse.
-  
+
+The following connections need to be made to an appropriate microcontroller: 
+For the purpose of this demonstration, we are using a 3.3v microsd card reader, so we opted for the arduino mkr1310 board for it's 3.3v logic. Chip select may be any unused digital pin. 
+
+|-------|---------|
+|SD Card| MKR1310 |
+|-------|---------|
+|MOSI   | MOSI    |
+|MISO   | MISO    |
+|SCK    | SCK     |
+|CS     | 5       |
+|PWR    | VCC     | 
+|GND    | GND     | 
+|-------|---------|
+
+![Example Connections](https://github.com/C-Wesley/LearningWIL/blob/main/SD_Card/img/sd_example.jpg)
