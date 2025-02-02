@@ -32,7 +32,7 @@ It's wants a signal with a 20ms period and a high pulse of between 1100 -1900 mi
 | 1100-1475         | REVERSE            |
 | 1525-1900         | FORWARD            |
 
-This is the same idea with servo motors: The 90 degrees would coresspond to our thrusters being off. The 0 degrees is full throttle reverse and the 180 degrees is full throttle forwards. 
+This is the same idea with servo motors: The 90 degrees would coresspond to our thrusters being off. The 0 degrees is full throttle reverse and the 180 degrees is full throttle forwards. In this manner, you can either hook up servos to check that the motor control is working properly, or you can hook up to a scope to see the PWM singal being generated. 
 ![Servo Motor Control](https://github.com/C-Wesley/LearningWIL/blob/main/Thruster%20Controls/img/RC-Servo-Motor-Control-Signal.png)
 
 
