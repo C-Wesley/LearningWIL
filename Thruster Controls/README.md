@@ -13,5 +13,5 @@ The T200 thrusters use a three phase brushless motor.
 You can think of each phase as a separate coil that is wraped around a stator. 
 These coils are energized following a pattern to make the rotor spin. See diagram below. 
 
-![Three Phase Motor Diagram](https://github.com/C-Wesley/LearningWIL/blob/main/Thruster%20Controls/img/3-phase-brushless-motor.gif)
+![Three Phase Motor Diagram](https://github.com/C-Wesley/LearningWIL/blob/main/Thruster%20Controls/img/3phaseBrushlessMotor.gif)
 
