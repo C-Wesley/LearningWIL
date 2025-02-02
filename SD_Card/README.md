@@ -13,9 +13,9 @@ Then move onto path_parse.
 
 An advanced user may find the SD class and File class API more useful (Located near the bottom of the page): 
 
-https://docs.arduino.cc/libraries/sd/#SD%20class
+<a href="https://docs.arduino.cc/libraries/sd/#SD%20class" target="_blank">SD Class API</a>
 
-https://docs.arduino.cc/libraries/sd/#File%20class
+<a href="https://docs.arduino.cc/libraries/sd/#File%20class" target="_blank">SD Class API</a>
 
 The following connections need to be made to an appropriate microcontroller: 
 For the purpose of this demonstration, we are using a 3.3v microsd card reader, so we opted for the arduino mkr1310 board for it's 3.3v logic. Chip select may be any unused digital pin. 
