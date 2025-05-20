@@ -1,5 +1,5 @@
 # Global Navigation Satellite System 
-We are using the sparkfun zed f9p GNSS reciever.  
+We are using the sparkfun ZED F9P GNSS reciever.  
 
 <a href="https://www.sparkfun.com/sparkfun-gps-rtk-sma-kit.html" target="_blank">Sparkfun GNSS SMA Kit</a>
 
