@@ -1,6 +1,7 @@
 # LearningWIL
 
 ![WIL in the Canal](img/canal.jpg "WIL in the Canal")
+![WIL canal group](img/group_2.jpg "RAGU Group Photo")
 ![WIL at Lakeolmstead](img/group.jpeg "WIL at Lake Olmstead")
 
 Water is Life, aka WIL, is an Autonomous Surface Vehicle developed for Augusta Utilities as part of an internship collaboration with Augusta University. 
@@ -15,5 +16,5 @@ WIL is generally based on this class diagram:
 :TODO: Update Class Diagram. 
 
 ![WIL Class Diagram](img/WIL.drawio.svg "WIL Class Diagram")
-![WIL Block Diagram](img/group.jpeg "WIL Block Diagram")
+![WIL Block Diagram](img/BlockDiagram.pdf "WIL Block Diagram")
 
