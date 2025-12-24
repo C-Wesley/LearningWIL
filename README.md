@@ -1,4 +1,8 @@
 # LearningWIL
+
+![WIL in the Canal](img/canal.jpg "WIL in the Canal")
+![WIL at Lakeolmstead](img/group.jpeg "WIL at Lake Olmstead")
+
 Water is Life, aka WIL, is an Autonomous Surface Vehicle developed for Augusta Utilities as part of an internship collaboration with Augusta University. 
 The purpose of this repository is to document the required programming and electronics knowledge needed to continue developing WIL.
 
@@ -9,3 +13,7 @@ The "class based examples" are a little more intricitate programming wise. We us
 The "WILDev" directory contains the combination of all the previous examples into code that lives on both WIL and a remote control. The most recent class based version is in the "new code" directory, but and older version that doesn't use classes is also in the "old code" directory. 
 WIL is generally based on this class diagram: 
 :TODO: Update Class Diagram. 
+
+![WIL Class Diagram](img/WIL.drawio.svg "WIL Class Diagram")
+![WIL Block Diagram](img/group.jpeg "WIL Block Diagram")
+
