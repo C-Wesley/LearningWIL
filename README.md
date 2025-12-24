@@ -19,8 +19,8 @@ WIL is designed for environmental data collection and autonomous navigation of l
 
 This is the recommended starting point for new contributors.
 
-- Build circuits **by hand**
-- Type the code **from scratch** (do not copy–paste)
+- Build circuits 
+- Type the code (do not copy–paste)
 - Learn how each sensor works in isolation
 
 Suggested exercises:
