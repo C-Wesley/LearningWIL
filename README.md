@@ -16,5 +16,5 @@ WIL is generally based on this class diagram:
 :TODO: Update Class Diagram. 
 
 ![WIL Class Diagram](img/WIL.drawio.svg "WIL Class Diagram")
-![WIL Block Diagram](img/BlockDiagram.pdf "WIL Block Diagram")
+![WIL Block Diagram](img/BlockDiagram.jpg "WIL Block Diagram")
 
