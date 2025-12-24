@@ -1,20 +1,94 @@
 # LearningWIL
 
-Water is Life, aka WIL, is an Autonomous Surface Vehicle developed for Augusta Utilities as part of an internship collaboration with Augusta University. 
-The purpose of this repository is to document the required programming and electronics knowledge needed to continue developing WIL.
+**Water Is Life (WIL)** is an Autonomous Surface Vehicle (ASV) developed for Augusta Utilities as part of an internship collaboration with Augusta University.
+
+This repository serves as a learning and continuation guide for future developers. It documents the programming, electronics, and system architecture required to understand and extend WIL.
+
+## Project Overview
 
 ![WIL in the Canal](img/canal.jpg "WIL in the Canal")
 ![WIL canal group](img/group_2.jpg "RAGU Group Photo")
-![WIL at Lakeolmstead](img/group.jpeg "WIL at Lake Olmstead")
+![WIL at Lake Olmstead](img/group.jpeg "WIL at Lake Olmstead")
 
-The "beginner example" directory is a great place to start. I recommend constructing the circuits and typing the code from scratch. Not copy pasting it. These examples are supposed to get you comfortable with building circuits and programming in C++. After working through the begineering examples, you should feel comfortable with how these sensors operate. Take time to tinker with them. For example, see how the latitude and longitude change when you move vs when the gps just sits in a location. With the inertial mesuarement unit, move the sensor arround and see how it works. Plot some data as you move it! (The Serial plotter is really useful here!). Once you have the SD card working, see if you can put everything together to make a GPS data/heading logger!  
+WIL is designed for environmental data collection and autonomous navigation of local waterways. Development spans embedded programming, sensor integration, data logging, and vehicle controls.
 
-The "class based examples" are a little more intricitate programming wise. We use what is called "object oriented programming". When you see a line of code such as " File myFile = ....;" This is saying create a File 'object'. The File object should contain code related to working with Files in memory. An object can have both "methods/functions" and variable associated with them. It's a good way for programmers to keep code contained and find where something is not working. 
+## Repository Structure
 
-The "WILDev" directory contains the combination of all the previous examples into code that lives on both WIL and a remote control. The most recent class based version is in the "new code" directory, but and older version that doesn't use classes is also in the "old code" directory. 
-WIL is generally based on this class diagram: 
-:TODO: Update Class Diagram. 
+### 1. Beginner Examples
+`Beginner Examples/`
+
+This is the recommended starting point for new contributors.
+
+- Build circuits **by hand**
+- Type the code **from scratch** (do not copy–paste)
+- Learn how each sensor works in isolation
+
+Suggested exercises:
+- Observe GPS latitude/longitude changes while stationary vs. moving
+- Move the IMU and visualize data using the **Arduino Serial Plotter**
+- Combine GPS, heading, and SD card logging into a simple data logger
+
+These examples are for you to better understand each sensor individually before trying to throw all of them together. 
+They are the 'building blocks' so to speak of WIL. 
+
+
+### 2. Class-Based Examples
+`Class Based Examples/`
+
+These examples introduce **Object-Oriented Programming (OOP)** in C++.
+
+Example:
+```cpp
+File myFile = ...
+This creates a `File` object, which:
+
+- Encapsulates data related to files
+- Provides methods (functions) that operate on that data
+
+Using classes helps:
+
+- Organize complex systems
+- Isolate bugs
+- Scale the codebase as features grow
+
+### 3. WIL Development Code
+
+`WILDev/`
+
+This directory contains the arudino code running on:
+
+- WIL (Arduino Giga)
+- The remote controller (MKR 1310)
+
+Subdirectories:
+
+- `new code/` – current class-based implementation
+- `old code/` – old version (no classes)
+
+New development should be based on `new_code/`.
+
+## System Architecture
+
+WIL is generally structured around the following diagrams.
+
+ **:TODO:** Update class diagram to reflect latest architecture.
+
+### Class Diagram
 
 ![WIL Class Diagram](img/ClassDiagram.jpg "WIL Class Diagram")
+
+### Block Diagram
+
 ![WIL Block Diagram](img/BlockDiagram.jpg "WIL Block Diagram")
 
+
+## Contributing
+
+This repository is designed to be learned from, modified, and extended. Developers are encouraged to:
+
+- Experiment
+- Break things
+- Document findings
+- Improve clarity for the next developer
+
+Water is life (and so is maintainable code).
