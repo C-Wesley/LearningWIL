@@ -40,6 +40,7 @@ These examples introduce **Object-Oriented Programming (OOP)** in C++.
 Example:
 ```cpp
 File myFile = ...
+```
 This creates a `File` object, which:
 
 - Encapsulates data related to files
