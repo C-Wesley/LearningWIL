@@ -66,7 +66,7 @@ Subdirectories:
 - `new code/` – current class-based implementation
 - `old code/` – old version (no classes)
 
-New development should be based on `new_code/`.
+New development should be based on `new code/`.
 
 ## System Architecture
 
