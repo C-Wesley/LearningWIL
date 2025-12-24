@@ -1,0 +1,191 @@
+#ifndef DISPLAY_H
+#define DISPLAH_H
+
+    #include <Adafruit_GFX.h>
+    #include <Adafruit_SSD1305.h> 
+    #include <SPI.h>
+    #include "types.h"
+
+    static const unsigned char hauger_bmp[] PROGMEM =
+    {   0xff, 0x80, 0x19, 0xff, 0xff, 0xff, 
+        0xff, 0x38, 0x40, 0xff, 0xff, 0xff, 
+        0xfe, 0x1f, 0xfe, 0x0f, 0xff, 0xff, 
+        0xfe, 0x3b, 0xff, 0xf3, 0xff, 0xff, 
+        0xf8, 0x67, 0xff, 0xf8, 0xff, 0xff, 
+        0xf8, 0xe7, 0xc0, 0x3c, 0x7f, 0xff, 
+        0xf1, 0xfc, 0x7f, 0xc1, 0x7f, 0xff, 
+        0xf1, 0xf8, 0xff, 0xfd, 0x7f, 0xff, 
+        0xe3, 0xf9, 0xff, 0xfe, 0x7f, 0xff, 
+        0xc7, 0xf9, 0xff, 0xfe, 0x7f, 0xff, 
+        0xc7, 0xf0, 0xff, 0xff, 0x7f, 0xff, 
+        0xc7, 0xf0, 0xff, 0xff, 0xbf, 0xff, 
+        0xc7, 0xf0, 0x7f, 0xff, 0xbf, 0xff, 
+        0xc7, 0xf0, 0xff, 0xff, 0xbf, 0xff, 
+        0xcf, 0xf0, 0x3f, 0xff, 0xbf, 0xff, 
+        0xcf, 0xf0, 0x7f, 0xfc, 0x1f, 0xff, 
+        0xcf, 0xc0, 0x07, 0xf8, 0x1f, 0xff, 
+        0xce, 0x00, 0x01, 0xfb, 0xcf, 0xff, 
+        0xce, 0x00, 0x01, 0xf0, 0x6f, 0xff, 
+        0xcc, 0x00, 0x00, 0x70, 0x27, 0xff, 
+        0xcc, 0x00, 0x00, 0x07, 0x27, 0xff, 
+        0xc0, 0x18, 0x38, 0x30, 0x27, 0xff, 
+        0xc0, 0xf0, 0x00, 0x31, 0xf7, 0xff, 
+        0xcf, 0x80, 0x00, 0x3e, 0xf7, 0xff, 
+        0xd8, 0x00, 0x00, 0x3f, 0xf7, 0xff, 
+        0xc0, 0x01, 0x80, 0x3f, 0xf7, 0xff, 
+        0xc0, 0x01, 0xfc, 0x1f, 0xf7, 0xff, 
+        0xc0, 0x00, 0x7c, 0x07, 0xf7, 0xff, 
+        0xc0, 0x00, 0x00, 0x00, 0xf7, 0xff, 
+        0x80, 0x00, 0x00, 0x03, 0x77, 0xff, 
+        0x80, 0x00, 0x00, 0x0f, 0xf7, 0xff, 
+        0xa0, 0x00, 0x00, 0x0f, 0xf7, 0xff, 
+        0xd8, 0x00, 0x00, 0x1f, 0xf7, 0xff, 
+        0xc0, 0x00, 0x00, 0x1f, 0xf7, 0xff, 
+        0xf0, 0x00, 0x00, 0x00, 0x77, 0xff, 
+        0xf8, 0x00, 0x00, 0x00, 0x77, 0xff, 
+        0xf8, 0x00, 0x10, 0x07, 0xe7, 0xff, 
+        0xf8, 0x00, 0x08, 0x1f, 0xe7, 0xff, 
+        0xf8, 0x00, 0x08, 0x03, 0xe7, 0xff, 
+        0xf8, 0x00, 0x00, 0x07, 0xe7, 0xff, 
+        0xf8, 0x00, 0x00, 0x3f, 0xe7, 0xff, 
+        0xf8, 0x00, 0x00, 0xff, 0xe7, 0xff, 
+        0xfa, 0x00, 0x00, 0x7f, 0xc7, 0xff, 
+        0xfb, 0x80, 0x00, 0x0f, 0xc7, 0xff, 
+        0xf8, 0xe0, 0x00, 0x03, 0x8f, 0xff, 
+        0xf8, 0x38, 0x00, 0x01, 0x9f, 0xff, 
+        0xf8, 0x0c, 0x00, 0x00, 0x1f, 0xff, 
+        0x00, 0x03, 0x00, 0x00, 0x3f, 0xff, 
+        0x0e, 0x01, 0x80, 0x00, 0x1f, 0xff, 
+        0x01, 0xe0, 0x60, 0x00, 0x07, 0xff, 
+        0x00, 0x38, 0x30, 0x00, 0x73, 0xff, 
+        0x00, 0x0e, 0x18, 0x00, 0xf1, 0xff, 
+        0x00, 0x03, 0x86, 0x01, 0xf0, 0xff, 
+        0x0e, 0x00, 0xe3, 0x03, 0xf0, 0x7f, 
+        0x3b, 0x80, 0x31, 0xc1, 0xe1, 0x3f, 
+        0x60, 0xc0, 0x1c, 0x60, 0xe1, 0x9f, 
+        0x40, 0x60, 0x06, 0x30, 0xe0, 0x8f, 
+        0x40, 0x30, 0x03, 0x18, 0x60, 0x87, 
+        0x40, 0xe0, 0x01, 0x0c, 0xe0, 0xc3, 
+        0x20, 0x80, 0x01, 0x84, 0xe0, 0x41, 
+        0x30, 0x00, 0x00, 0x03, 0xe0, 0x41, 
+        0x00, 0x00, 0x00, 0x00, 0xc0, 0x60, 
+        0x00, 0x00, 0x00, 0x00, 0x00, 0x31, 
+        0x00, 0x00, 0x00, 0x00, 0x00, 0x0f
+    };
+
+    class Display
+    {
+        public:
+            Adafruit_SSD1305 display;
+            // Display Object. We have 128 pixels on the x-axis, 64 pixels on the y-axis.
+            // MOSI, and SCK are connected Normally.
+            // D0 on the display is SCK
+            // D1 on the display is MOSI
+            // MISO is not used. 
+            // Pin 11 is connected to D/C.
+            // Pin  7 is connected to Reset.
+            // Pin  6 is connected to CS. 
+            // Use a 220 uf capacitor on the power rail.
+
+            Display(): display(128, 64, &SPI, 11, 7, 6, 7000000UL)
+            {
+
+            }
+
+            bool begin()
+            {
+                if (!display.begin())
+                {
+                    return 0;
+                }
+                else 
+                {
+                    display.clearDisplay();
+                    // drawBitmap      x0, y0,    b itmap, width, height, color
+                    display.drawBitmap( 0,  0, hauger_bmp,    48,     64,    1);
+                    // Prepare and draw text. 
+                    display.setTextSize(1);    display.setTextColor(WHITE);
+                    display.setCursor(58, 14); display.println("Standby to");
+                    display.setCursor(61, 22); display.println("Get Some!");
+                    display.setCursor(50, 57); display.println("#GetObsessed!");
+
+                    // Text Box
+                    //                    x0, y0,  w,  h, r, color
+                    display.drawRoundRect(55, 12, 65, 19, 3,   1);
+                    
+                    //                    x0, y0, x1, y1, x2, y2, color
+                    display.fillTriangle( 50, 30, 55, 25, 55, 30,   1);
+                    display.drawPixel(56, 30, 1);
+                    display.display();
+
+                    delay(splashScreenDelay);
+                    return 1;
+                }
+            }
+
+            void displayRemoteInfo(int leftSpeed, int rightSpeed, EcoData &data)
+            { 
+                clear();
+                display.print("MODE: "); display.println("REMOTE CONTROL");
+                
+                display.setCursor(2, 10);
+                display.print("LeftSpeed : " ); display.println(leftSpeed); 
+                
+                display.setCursor(2, 18);
+                display.print("RightSpeed: "); display.println(rightSpeed);
+                
+                display.setCursor(2, 26);
+                display.print("DO: "); display.print(data.DO); display.print(" "); display.print("ORP: "); display.println(data.ORP);
+                
+                display.setCursor(2, 34);
+                display.print("PH: "); display.print(data.pH); display.print(" "); display.print("C  : "); display.println(data.conductivity);
+                
+                display.setCursor(2, 42);
+                display.print("TEMP: "); display.println(data.waterTemp);
+                
+                display.display();
+            }
+
+            void displayAutonomous(NavigationState& navState)
+            {
+                clear();
+                display.print("MODE: "); display.println("AUTONOMOUS");
+                
+                display.setCursor(2, 10);
+                display.print("Waypoint: "); display.print(navState.waypointIndex); display.print("/"); display.print(navState.numWaypoints);
+
+                display.setCursor(2, 18);
+                display.print("Distance: "); display.print(navState.distanceToWaypoint);
+
+                display.setCursor(2, 26);
+                display.print("Heading: ");  display.print(navState.currentHeading);
+
+                display.setCursor(2, 34);    
+                display.print("Target Heading: "); display.print(navState.targetHeading);
+
+                display.display();
+            }
+
+            void displayTugboat()
+            {
+                clear();
+                display.print("MODE: "); display.print("TUGBOAT");
+                display.display();
+            }
+
+            void clear()
+            {
+                // Clear the Display. 
+                display.clearDisplay(); 
+                // Draw a border 
+                //                    x0, y0,               w,                h, r, color
+                display.drawRoundRect( 0,  0, display.width(), display.height(), 0, WHITE);
+                display.setTextSize(1); display.setTextColor(WHITE);
+                
+                display.setCursor(2, 2); 
+            }
+            
+        private: 
+            int splashScreenDelay = 2000;
+    }; 
+#endif
