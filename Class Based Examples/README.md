@@ -15,11 +15,11 @@
 ## Typical layout 
 | Path | Description |
 | ---  | --- | 
-| - /test_functionality     | // Contains code for \[functionality\]            |
-|  - types.h                | // local copy of shared types                     |
-|  - config.h               | // local copy of configuration variables          |
-|  - functionality.h        | // Header file that contains the class definition |
-|  - test_functionality.ino | // Example of using the class                     |
+| /test_functionality     | Contains code for \[functionality\]            |
+|  &emsp;- types.h                | local copy of shared types                     |
+|  &emsp;- config.h               | local copy of configuration variables          |
+|  &emsp;- functionality.h        | Header file that contains the class definition |
+|  &emsp;- test_functionality.ino | Example of using the class                     |
 
 ## Purpose of `types.h`
 - Defines common types, typedefs, and shared structs and classes used across examples.
