@@ -13,7 +13,8 @@
 6. test_radio
 
 ## Typical layout 
-|                           |                                                   |   
+| Path | Description |
+| ---  | --- | 
 | - /test_functionality     | // Contains code for \[functionality\]            |
 |  - types.h                | // local copy of shared types                     |
 |  - config.h               | // local copy of configuration variables          |
@@ -30,4 +31,4 @@ A structure is a collection of like or related varaibles under some name. Struct
 A class is a collection of variables and their associated methods together. In pure C programming, you only have structures. But in C++, you have access to classes. 
 
 ## Build & usage
-- Each module can be built independently. Connect the appropriate hardware. 
+- Each module can be built independently. Connect the appropriate hardware.
