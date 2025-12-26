@@ -4,6 +4,19 @@
 - A collection of class-based C++ examples and supporting headers used for learning object oriented programming.
 - Examples are grouped by intended functionality; some headers like `types.h` appear in multiple folders. Some files utilize some of the previous works. 
 
+## Design Philosophy
+
+The examples in this repository follow a few guiding principles:
+
+- **Separation of concerns**  
+  Data definitions (`types.h`) are kept separate from logic and hardware interaction.
+
+- **Self-contained modules**  
+  Each test folder can be compiled and understood independently.
+
+- **Clarity over cleverness**  
+  Code prioritizes readability and learning value over extreme optimization.
+
 ## Recommened Learning Order
 1. test_imu
 2. test_gps
@@ -29,6 +42,8 @@ A class is a collection of variables and their associated methods together. In p
 ## Purpose of `types.h`
 - Defines common types, typedefs, and shared structs and classes used across examples.
 - Serves to keep examples self-contained so each module can compiled independently.
+
+## Explaination of Types
 
 ### `class Point`
 
@@ -70,7 +85,7 @@ Computes the heading (bearing) required to travel from this point to another.
 
 - Output range: \[0, 360\) degrees
 - North = 0°, East = 90°, South = 180°, West = 270°
-
+---
 ### `struct Date`
 
 Represents a timestamp, typically sourced from the GPS module.
@@ -85,7 +100,7 @@ Represents a timestamp, typically sourced from the GPS module.
 | `hour` | `uint8_t` | Hour |
 | `minute` | `uint8_t` | Minute |
 | `second` | `uint8_t` | Second |
-
+---
 ### `struct GlobalPositioningData`
 
 Aggregates all GPS-related data into a single structure.
@@ -106,7 +121,7 @@ This struct is typically populated directly from the GNSS module and used by nav
 | `groundSpeed` | `long` | Ground speed (mm/s) |
 | `headingMotion` | `long` | Motion heading (degrees × 10⁻⁵) |
 | `headingVehicle` | `long` | Vehicle heading (degrees × 10⁻⁵) |
-
+---
 ### `struct NavigationState`
 
 Represents the current navigation and control state of WIL.
@@ -123,7 +138,7 @@ Represents the current navigation and control state of WIL.
 | `averageGPSError` | `double` | Running average of GPS error |
 | `waypointIndex` | `int` | Current waypoint index |
 | `numWaypoints` | `int` | Total number of waypoints |
-
+---
 ### `struct EcoData`
 
 Stores measurements from environmental sensors.
@@ -137,7 +152,7 @@ Stores measurements from environmental sensors.
 | `pH` | `float` | pH level |
 | `conductivity` | `float` | Electrical conductivity |
 | `waterTemp` | `float` | Water temperature (°C) |
-
+---
 ### `enum ProgramMode`
 
 Defines the operating mode of WIL.
@@ -149,7 +164,7 @@ Defines the operating mode of WIL.
 | `REMOTECONTROL` | `0` | Manual operator control |
 | `AUTONOMOUS` | `1` | Fully autonomous navigation |
 | `TUGBOAT` | `2` | Assisted or towing behavior |
-
+---
 ### `class HeadingAverage`
 
 Implements a circular buffer and vector averaging for averaging heading angles.
