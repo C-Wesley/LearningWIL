@@ -15,10 +15,10 @@ The T200 thrusters use a three phase brushless motor.
 You can think of each phase as a separate coil that is wraped around a stator. 
 These coils are energized following a pattern to make the rotor spin. See diagram below. 
 
-![Three Phase Motor Diagram](https://github.com/C-Wesley/LearningWIL/blob/main/Thruster%20Controls/img/3phaseBrushlessMotor.gif)
+![Three Phase Motor Diagram](img/3phaseBrushlessMotor.gif)
 
 Example Wiring Diagram: 
-![Example Wiring Diagram](https://github.com/C-Wesley/LearningWIL/blob/main/Thruster%20Controls/img/ConnectionDiagram.png)
+![Example Wiring Diagram](img/ConnectionDiagram.png)
 
 We don't directly control the three phase connections. Instead we use an ESC. The ESC requires a PWM signal from the microcontroller and power from a battery. We have a wiring harness that allows us to power two ESC's in parallel. 
 
@@ -33,7 +33,7 @@ It's wants a signal with a 20ms period and a high pulse of between 1100 -1900 mi
 | 1525-1900         | FORWARD            |
 
 This is the same idea with servo motors: The 90 degrees would coresspond to our thrusters being off. The 0 degrees is full throttle reverse and the 180 degrees is full throttle forwards. In this manner, you can either hook up servos to check that the motor control is working properly, or you can hook up to a scope to see the PWM singal being generated. 
-![Servo Motor Control](https://github.com/C-Wesley/LearningWIL/blob/main/Thruster%20Controls/img/RC-Servo-Motor-Control-Signal.png)
+![Servo Motor Control](img/RC-Servo-Motor-Control-Signal.png)
 
 
 

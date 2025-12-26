@@ -25,5 +25,5 @@ Search "SAMD" and look for the arduino SAMD boards.
 To install the library go to tools -> manage libraries
 Search "SparkFun GNSS v3".
 
-![Boards Manager](https://github.com/C-Wesley/LearningWIL/blob/main/GNSS/img/SAMD.png)
-![Boards Manager](https://github.com/C-Wesley/LearningWIL/blob/main/GNSS/img/v3.png)
+![Boards Manager](img/SAMD.png)
+![Boards Manager](img/v3.png)

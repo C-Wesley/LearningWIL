@@ -29,5 +29,5 @@ For the purpose of this demonstration, we are using a 3.3v microsd card reader, 
 |PWR    | VCC     | 
 |GND    | GND     | 
 
-![Example Connections](https://github.com/C-Wesley/LearningWIL/blob/main/SD_Card/img/sd_example.jpg)
+![Example Connections](img/sd_example.jpg)
 Figure 1. Example connections to the MKR 1310 board. 
