@@ -8,7 +8,7 @@ Objectives:
 
 We used a MKR1310 microcontroller. Any 3.3v logic microcontroller should work. 
 
-<a href="https://docs.arduino.cc/hardware/mkr-wan-1310/" target="_blank">Sparkfun GNSS SMA Kit</a>
+<a href="https://docs.arduino.cc/hardware/mkr-wan-1310/" target="_blank">MKR1310</a>
 
 Connections for using I2C:
 
