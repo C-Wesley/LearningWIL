@@ -1,8 +1,20 @@
 # Class Based Examples
 
 ## Overview
-- A collection of class-based C++ examples and supporting headers used for learning object oriented programming.
-- Examples are grouped by intended functionality; some headers like `types.h` appear in multiple folders. Some files utilize some of the previous works. 
+- These examples are derived from subsystems used in the WIL (Water Is Life) autonomous surface vehicle. Reviewing them before modifying the main WIL codebase will make it easier to understand how the individual components fit together.
+- The examples assume some familiarity with C++ classes. If object-oriented programming is new to you, it may be helpful to review introductory material on C++ classes before working through these files.
+- Examples are grouped by intended functionality; some headers like `types.h` appear in multiple folders, and some examples build on concepts introduced in earlier ones.
+
+### C++ Class & OOP Tutorials
+- Object-oriented programming is a broad topic, and it is common to spend years gradually becoming more comfortable with it. For the purposes of this project, however, only a small and practical subset of OOP concepts is required. The goal here is not mastery, but building enough understanding to read, use, and modify the WIL code with confidence.
+
+- https://paulmurraycbr.github.io/ArduinoTheOOWay.html
+
+- https://www.geeksforgeeks.org/cpp/object-oriented-programming-in-cpp/
+
+- https://www.geeksforgeeks.org/cpp/c-classes-and-objects/
+
+- https://www.learncpp.com/cpp-tutorial/introduction-to-object-oriented-programming/
 
 ## Design Philosophy
 
@@ -17,7 +29,7 @@ The examples in this repository follow a few guiding principles:
 - **Clarity over cleverness**  
   Code prioritizes readability and learning value over extreme optimization.
 
-## Recommened Learning Order
+## Recommended Learning Order
 1. test_imu
 2. test_gps
 3. test_sensors
@@ -35,15 +47,18 @@ The examples in this repository follow a few guiding principles:
 |  &emsp;- test_functionality.ino | Example of using the class                     |
 
 ## What are structures and classes? 
-A structure is a collection of like or related varaibles under some name. Structures don't have methods defined inside of them, but a funciton can be writen that takes in a structure. 
+A structure is a collection of like or related variables under some name. Structures don't have methods defined inside of them, but a function can be written that takes in a structure. 
 
 A class is a collection of variables and their associated methods together. In pure C programming, you only have structures. But in C++, you have access to classes. 
 
 ## Purpose of `types.h`
 - Defines common types, typedefs, and shared structs and classes used across examples.
 - Serves to keep examples self-contained so each module can compiled independently.
+- Classes like `Point` and `HeadingAverage` encapsulate math that would otherwise be duplicated.
+- Avoid modifying `types.h` inside individual test folders unless explicitly experimenting. 
+- Do not mix degrees and radians — all public interfaces use degrees.
 
-## Explaination of Types
+## Explanation of Types
 
 ### `class Point`
 
@@ -76,7 +91,7 @@ It also encapsulates navigation-related computations, such as:
 
 Computes the great-circle distance (in meters) between this point and another point using spherical Earth geometry.
 
-- Uses Earth radius: **6,372,795 meters**
+- Uses Earth radius: 6,372,795 meters
 - Does not modify either point
 
 ##### `double getTargetHeading(const Point& other) const`
