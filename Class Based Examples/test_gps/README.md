@@ -4,7 +4,9 @@ This folder contains a from-scratch GPS driver written in C++ for Arduino. It co
 
 If you only want GPS data quickly, a library like in the beginner examples is easier to use. 
 
-If you want to understand what the code the library is doing, this is a step in the right direction. However, the actual Sparkfun library takes advantage of concepts such as mutex's which my CS degree barely prepared me to understand, much less teach. So instead, I've developed a much more simple to understand version that has some limitations. 
+If you want to understand what the code the Sparkfun library is doing, this is a step in the right direction. The problem is that the official implementation relies on concepts like mutexes. Mutexes are powerful, an excellent tool, and absolutely not something I want to explain in this project.
+
+So this implementation trades completeness and complexity for simplicity. It’s simpler, more readable, but also limited.
 
 ## Big Picture of the class
 

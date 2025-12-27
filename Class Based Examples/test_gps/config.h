@@ -4,7 +4,7 @@
         These variables are ones that may be useful to change at some point in time.
         I've grouped them together in this file. As a design principle, I didn't want these hard 
         coded into the classes. Instead, the class should own it's own copy. This makes the 
-        classes reusable in other code independint of this config file. 
+        classes reusable in other code independent of this config file. 
 
         The keyword "const" is useful to ensure a value is not changed at run time. 
         The keyword "constexpr" is useful to ensure a value is not changed at compile time.
