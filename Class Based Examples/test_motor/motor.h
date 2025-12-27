@@ -41,7 +41,7 @@
                 while(currentSpeed != targetSpeed)
                 {   
                     // The right hand side of this line of code is called 
-                    // a terniary operator. 
+                    // a ternary operator. 
                     //              (condition) ? (value if true)  : (value if false)
                     currentSpeed += (currentSpeed < targetSpeed) ? (1) : (-1);
                     motor.writeMicroseconds(currentSpeed);
