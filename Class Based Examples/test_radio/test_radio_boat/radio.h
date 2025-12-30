@@ -40,7 +40,7 @@
                 {
                     char start = Serial2.read();
                     
-                    switch (start)
+                    switch (start)       // Check for one of our packet headers
                     {
                         case 'S':        // We are receiving a speed 
                             Serial.println("We are recieiving a speed.");
@@ -66,15 +66,15 @@
                 // Convert the EcoData to a pointer to a byte array 
                 byte * b = (byte *) &data;
 
-                Serial2.print('R');
-                Serial2.write(b, sizeof(EcoData));
-                Serial2.print('E');
+                Serial2.print('R');                // Header 
+                Serial2.write(b, sizeof(EcoData)); // Data 
+                Serial2.print('E');                // Footer
 
                 // Turn off our remote reading flag. 
                 takeRemoteReading = 0;
             }
 
-            void sendAutoData(const NavigationState &state)
+            void sendAutoData(const NavigationState &state) // should have named this sendNavState /fp 
             {
                 // Convert the NavigationState to a pointer to a byte array 
                 byte * b = (byte *) &state;
@@ -108,6 +108,12 @@
                     char footer = buffer[packetSize-1]; 
                     if (footer == 'E')
                     {
+                        // Expected message format (9 bytes total):
+                        // Byte 0–3: leftMotorRec (int)
+                        // Byte 4–7: rightMotorRec (int)
+                        // Byte 8:   footer ('E')
+                        // 'buffer' -> memory address of start of leftMotorRec
+                        // 'buffer + sizeof(int)' -> memory address of the start of rightMotorRec
                         memcpy(&leftMotorRec, buffer, sizeof(int));
                         memcpy(&rightMotorRec, buffer+sizeof(int), sizeof(int));
                     }
