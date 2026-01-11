@@ -31,3 +31,7 @@ For the purpose of this demonstration, we are using a 3.3v microsd card reader, 
 
 ![Example Connections](img/sd_example.jpg)
 Figure 1. Example connections to the MKR 1310 board. 
+
+# Lab Notebook Entries
+
+[Basics of SD Card](https://c-wesley.github.io/projects/asv/Notebook_2/17_Basics_of_SD_Card.pdf)

@@ -1,5 +1,5 @@
 #include <Wire.h>
-#define BNOAddress 0x28 // Found using I2C scanner
+#define BNOAddress 0x28 // Found using I2C scanner or reading the data sheet
 #define OPR_MODE 0x3D
 #define UNIT_SEL 0x3B
 
