@@ -9,7 +9,7 @@ const int Caddress   = 0x64;  // 100
 // Return code of the sensor
 byte code       = 0;
 
-// 
+// Parsing variables
 byte charIn     = 0;
 char sensorData[20];
 int timeDelay   = 900;
@@ -27,6 +27,7 @@ float readResponseAtlas(int sensorAddress)
   Wire.requestFrom(sensorAddress, 20, 1);
   code = Wire.read();
 
+  // Values for code:
   // 1 is success
   // 2 syntax error
   // 254 not ready
@@ -53,8 +54,10 @@ float readResponseAtlas(int sensorAddress)
 
 void setup()
 {
+  // Start the serial monitor and make sure it connects
   Serial.begin(9600);
   while (!Serial) {}
+  // Start I2C
   Wire.begin();
 
   // I2C Scanner
