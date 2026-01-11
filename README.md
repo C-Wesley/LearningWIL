@@ -24,9 +24,9 @@ This is the recommended starting point for new contributors.
 - Learn how each sensor works in isolation
 
 Suggested exercises:
-- Observe GPS latitude/longitude changes while stationary vs. moving
 - Move the IMU and visualize data using the **Arduino Serial Plotter**
-- Combine GPS, heading, and SD card logging into a simple data logger
+- Observe GPS latitude/longitude changes while stationary vs. moving
+- Combine GPS, heading, and SD card logging into a simple data logger!
 
 These examples are for you to better understand each sensor individually before trying to throw all of them together. 
 They are the 'building blocks' so to speak of WIL. 
@@ -52,7 +52,12 @@ Using classes helps:
 - Isolate bugs
 - Scale the codebase as features grow
 
-### 3. WIL Development Code
+### 3. Notebooks
+`Notebooks/`
+
+This directory contains a digital copy of the lab notebooks for WIL. Not every entry is directly related to WIL. Some where more for my own learning. However, there are tons of several useful entries to help you get more familiar with WIL. In the Beginner Examples, I've linked the related entires on each sensors readme file.
+
+### 4. WIL Development Code
 
 `WILDev/`
 

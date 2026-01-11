@@ -35,7 +35,7 @@ It's wants a signal with a 20ms period and a high pulse of between 1100 -1900 mi
 This is the same idea with servo motors: The 90 degrees would coresspond to our thrusters being off. The 0 degrees is full throttle reverse and the 180 degrees is full throttle forwards. In this manner, you can either hook up servos to check that the motor control is working properly, or you can hook up to a scope to see the PWM singal being generated. 
 ![Servo Motor Control](img/RC-Servo-Motor-Control-Signal.png)
 
-# Lab Notebook Entires
+# Related Lab Notebook Entires
 
 [Blue Robotics T200 Underwater Thruster](https://c-wesley.github.io/projects/asv/Notebook_1/12_Blue_Robotics_T200_Underwater_Thruster.pdf)
 

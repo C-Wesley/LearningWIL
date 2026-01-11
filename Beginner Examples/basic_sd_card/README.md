@@ -8,6 +8,25 @@ The main objectives here are to:
 - Delete a file if it exists
 - Extract data from a file into appropriate data types
 
+## SD Card Write & Read
+
+### Example 1: Writing and Reading a File
+
+**What the Program Does**
+- Initializes an SD card
+- Deletes an existing file if present
+- Writes text and numeric data to `data.txt`
+- Reopens the file and prints its contents to Serial
+---
+
+### Example 2: Reading and Parsing a CSV File
+
+**What the Program Does**
+- Opens a CSV file (`path.csv`)
+- Reads one line at a time
+- Parses ID, longitude, and latitude fields
+- Prints parsed data to Serial
+
 Begin by looking at SD_Card_RW. 
 Then move onto path_parse.
 
@@ -32,6 +51,6 @@ For the purpose of this demonstration, we are using a 3.3v microsd card reader, 
 ![Example Connections](img/sd_example.jpg)
 Figure 1. Example connections to the MKR 1310 board. 
 
-# Lab Notebook Entries
+# Related Lab Notebook Entries
 
 [Basics of SD Card](https://c-wesley.github.io/projects/asv/Notebook_2/17_Basics_of_SD_Card.pdf)
