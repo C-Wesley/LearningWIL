@@ -14,7 +14,7 @@ I recommend building the circuits, typing the code from scratch, and experimenti
 - basic_sensors
 - basic_radio
 
-Most examples have several levels of understanding. Take the GPS for instance. It has both a library version and a non library version. If you're goal is to just use the data from the sensor, use the library to make it easy. If your goal is to better understand I2C, take a look at the 'no-library-challenge'. It's not for the faint of heart!
+Most examples have several levels of understanding. Take the GPS for instance. It has both a library version and a non library version. If your goal is to just use the data from the sensor, use the library to make it easy. If your goal is to better understand I2C, take a look at the 'no-library-challenge'. It's not for the faint of heart!
 
 As WIL grew into a more complex system, writing code in the style of these examples became difficult to maintain and extend. To address this, the project transitioned to using classes, which allowed functionality to be separated into well-defined components and enabled data and system state to be encapsulated more cleanly. However, starting here is crucial to your understanding of how the components work and provides a place to experiment, make mistakes, and learn before moving on to more complex programs.
 
