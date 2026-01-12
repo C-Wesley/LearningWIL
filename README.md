@@ -55,7 +55,7 @@ Using classes helps:
 ### 3. Notebooks
 `Notebooks/`
 
-This directory contains a digital copy of the lab notebooks for WIL. Not every entry is directly related to WIL. Some were more for my own learning. However, there are tons of several useful entries to help you get more familiar with WIL. In the Beginner Examples, I've linked the related entires on each sensors readme file.
+This directory contains a digital copy of the lab notebooks for WIL. Not every entry is directly related to WIL. Some were more for my own learning. However, there are several useful entries to help you get more familiar with WIL. In the Beginner Examples, I've linked the related entires on each sensors readme file.
 
 ### 4. WIL Development Code
 
