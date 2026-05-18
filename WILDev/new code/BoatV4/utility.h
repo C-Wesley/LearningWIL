@@ -41,8 +41,20 @@
         pinMode(RGB_G, OUTPUT); // Green
         pinMode(RGB_B, OUTPUT); // Blue
     }
+
+    void i2cSdErrorBlink() // Cyan 
+    {
+        digitalWrite(RGB_B, LOW);
+        digitalWrite(RGB_R, HIGH);
+        digitalWrite(RGB_G, LOW);
+        delay(500);
+        digitalWrite(RGB_B, HIGH);
+        digitalWrite(RGB_R, HIGH);
+        digitalWrite(RGB_G, HIGH);
+        delay(500);
+    }
       
-    void i2cErrorBlink()
+    void i2cErrorBlink() // Blue 
     {
         digitalWrite(RGB_B, LOW);
         digitalWrite(RGB_R, HIGH);
@@ -54,7 +66,7 @@
         delay(500);
     }
 
-    void sdErrorBlink()
+    void sdErrorBlink() // Green 
     {
         digitalWrite(RGB_B, HIGH);
         digitalWrite(RGB_R, HIGH);

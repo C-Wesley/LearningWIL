@@ -3,14 +3,22 @@
 
 Boat boat;
 
-unsigned long pollControllerTimer; 
+unsigned long pollControllerTimer;  
 
 void setup()
 {
-    Serial.begin(DEBUG_SERIAL_BAUD); 
     setupI2C();
-    // i2cDetect();
-
+    
+    if (DEBUG_PRINT_SERIAL)
+    {
+      Serial.begin(DEBUG_SERIAL_BAUD); 
+      Serial.println("Begain Serial Print for debugging.");
+      Serial.println("==================================");
+      Serial.println("I2C Scan:");
+      i2cDetect();
+      Serial.println("=================================="); 
+    }
+     
     boat.begin();
 
     pollControllerTimer = millis();

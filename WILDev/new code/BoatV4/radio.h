@@ -140,12 +140,18 @@
                         {
                             case '0':
                                 mode = AUTONOMOUS;
+                                if (DEBUG_PRINT_SERIAL)
+                                  Serial.print("Changed mode to AUTONOMOUS!");
                                 break;
                             case '1':
                                 mode = REMOTECONTROL;
+                                if (DEBUG_PRINT_SERIAL)
+                                  Serial.print("Changed mode to REMOTE!");
                                 break;
                             case '2':
                                 mode = TUGBOAT;
+                                if (DEBUG_PRINT_SERIAL)
+                                  Serial.print("Changed mode to TUGBOAT!");
                             default:
                                 break;    
                         }

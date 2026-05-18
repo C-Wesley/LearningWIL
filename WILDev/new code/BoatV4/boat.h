@@ -54,22 +54,30 @@
 
             void begin()
             {
-                leftMotor.begin();
-                rightMotor.begin();
-                delay(ESC_INIT_TIME_MS);
 
                 bool gpsError = gps.begin();
                 bool bnoError = bno.begin();
                 bool waterMonitorError = waterMonitor.begin();
                 
                 remote.begin(SERIAL_RADIO_BAUD);
+                
                 logger.setAutoWaterDataFileName(ECO_DATA_FILE);
                 logger.setGPSDataFileName(GPS_DATA_FILE); 
                 logger.setRemoteWaterDataFileName(ECO_REMOTE_FILE);
+                
                 bool sdError        = logger.begin();
                 bool pathParseError = targetPath.parsePath();
-                targetPath.printPath();
+
+                if (DEBUG_PRINT_SERIAL)
+                {
+                  targetPath.printPath();
+                }
+         
                 gpsPollingTimer = millis();
+
+                leftMotor.begin();
+                rightMotor.begin();
+                delay(ESC_INIT_TIME_MS);
                 
                 if (DEBUG_PRINT_SERIAL)
                 {
@@ -79,17 +87,38 @@
                     Serial.print("SD      : "); Serial.println(sdError == 1 ? "SUCCESS" : "FAIL");
                     Serial.print("PATH    : "); Serial.println(pathParseError == 1 ? "SUCCESS" : "FAIL");
                 }
-                
-                // if (!(gpsError && bnoError && waterMonitorError && sdError && pathParseError))
-                // {
-                //     // Something failed. Stop.
-                //     while(1);
-                // }
 
-                // ::::
-                // remote.mode = AUTONOMOUS;
+                // i2c_e, sd_e=1 if there is a problem. 
+                bool i2c_e = gpsError==0 || bnoError==0 || waterMonitorError==0;
+                bool  sd_e =  sdError==0 || pathParseError==0;
+               
+               // Something failed. Stop. 
+               if (DEBUG_PRINT_SERIAL)
+               {
+                Serial.print("SD ERR  : "); Serial.println(sd_e);
+                Serial.print("I2C ERR : "); Serial.println(i2c_e); 
+               }
+               
+               if ( i2c_e || sd_e)
+               {
+                 while(true)
+                 {
+                   if (i2c_e && sd_e == 0)
+                   {
+                       i2cErrorBlink();
+                   }
+                   else if(sd_e && i2c_e == 0)
+                   {
+                       sdErrorBlink();
+                   }
+                   else
+                   {
+                       i2cSdErrorBlink();
+                   }
+                 }
+               } // If we make it to here, there appears to be no errors!
 
-                navState.numWaypoints = targetPath.numWayPoints;
+              navState.numWaypoints = targetPath.numWayPoints;
             }
 
             void updateAvgGPSError()
@@ -114,15 +143,15 @@
 
             void dontTurnArroundCheck()
             {
-                Serial.println();
+//                Serial.println();
                 if (navState.waypointIndex != 0)
                 {
                     navState.currentHeading = clampHeading(bno.getHeading() - navState.averageGPSError);
                     navState.targetHeading  = currentLoc.headingTo(targetLoc);
                     navState.headingError   = getHeadingError(navState.currentHeading, navState.targetHeading);  // Update the error in our heading. -1 to 1. 
 
-                    Serial.println();
-                    Serial.print("Error: "); Serial.println(navState.headingError);
+//                    Serial.println();
+//                    Serial.print("Error: "); Serial.println(navState.headingError);
                     if (abs(navState.headingError) > 0.5 && navState.waypointIndex < navState.numWaypoints-1)
                     {
                         // Assume the next way point is better. 
@@ -134,7 +163,6 @@
             
             void updateNavState()
             {
-                // ::::
                 // Serial.print(targetLoc.latitude); Serial.print(" "); Serial.println(targetLoc.longitude);
                 navState.distanceToWaypoint = currentLoc.distanceTo(targetLoc);                                  // Distance from current to target waypoint
                 //Serial.print("DistancToWayPoint: "); Serial.println(navState.distanceToWaypoint);
@@ -143,7 +171,7 @@
                 navState.headingError       = getHeadingError(navState.currentHeading, navState.targetHeading);  // Update the error in our heading. -1 to 1. 
                 navState.gpsError           = navState.currentHeading - (gps.data.headingMotion / 100000.0);     // Update the error from our GPS heading
                 
-                // Not updating here:
+                // Not updating here: 
                 // navState.averageGPSError; // Based on time
                 // navState.numWaypoints;    // Based on path
                 // navState.waypointIndex;   // Based on location 
@@ -162,22 +190,16 @@
                     }
                     if (navState.headingError >= 0) // Rotate Right
                     {
-                        // leftMotor.updateSpeed(ESC_ROTATE_FORWARD); // Set the left motor to reverse
-                        // rightMotor.updateSpeed(ESC_ROTATE_REVERSE);// Set the right motor to forward
                         updateSpeedSync(ESC_ROTATE_FORWARD, ESC_ROTATE_REVERSE); 
                     }
                     else // Heading error <0 , Rotoate Left
                     {
-                        // leftMotor.updateSpeed(ESC_ROTATE_REVERSE);
-                        // rightMotor.updateSpeed(ESC_ROTATE_FORWARD);
                         updateSpeedSync(ESC_ROTATE_REVERSE, ESC_ROTATE_FORWARD);
                     }
                     navState.currentHeading = clampHeading(bno.getHeading() - navState.averageGPSError);
                     navState.headingError   = getHeadingError(navState.currentHeading, navState.targetHeading);
                 }
                 // Set the motors back to straight after heading is corrected
-                // leftMotor.updateSpeed(ESC_FORWARD);
-                // rightMotor.updateSpeed(ESC_FORWARD);
                 updateSpeedSync(ESC_FORWARD, ESC_FORWARD);
             }
 
@@ -267,10 +289,12 @@
 
             void handleRemote()
             {
-                Serial.print(remote.leftMotorRec); Serial.print(" "); Serial.println(remote.rightMotorRec);
 
-                // leftMotor.updateSpeed(remote.leftMotorRec);
-                // rightMotor.updateSpeed(remote.rightMotorRec);
+                if (DEBUG_PRINT_SERIAL)
+                {
+                  Serial.print(remote.leftMotorRec); Serial.print(" "); Serial.println(remote.rightMotorRec);
+                }
+
                 updateSpeedSync(remote.leftMotorRec, remote.rightMotorRec); 
 
                 if (remote.takeRemoteReading)
@@ -327,7 +351,8 @@
                         logger.logAutonomous(navState, gps.data);
 
                         // For debugging. May need to comment out rotateToTargetHeading() method if stationary testing. 
-                        printVars(gps.data, navState);
+                        if (DEBUG_PRINT_SERIAL)
+                          printVars(gps.data, navState);
 
                         // Make sure we have a good fix, we are in autonomous mode, and the gps had more than 6 SIV. 
                         if (gps.data.gnssFixOK && remote.mode == AUTONOMOUS && (gps.data.SIV > 6))
@@ -393,9 +418,9 @@
                     else
                     {
                         // We didn't get good gps data.
-                        Serial.print("GPS didn't read properly.");
-                        // leftMotor.updateSpeed(ESC_STOP_SIGNAL);
-                        // rightMotor.updateSpeed(ESC_STOP_SIGNAL);
+                        if (DEBUG_PRINT_SERIAL)
+                          Serial.print("GPS didn't read properly.");
+                        
                         updateSpeedSync(ESC_STOP_SIGNAL, ESC_STOP_SIGNAL);
                     }
 
@@ -404,8 +429,6 @@
 
             void handleTugboat()
             {
-                // leftMotor.updateSpeed(ESC_STOP_SIGNAL);
-                // rightMotor.updateSpeed(ESC_STOP_SIGNAL);
                 updateSpeedSync(ESC_STOP_SIGNAL, ESC_STOP_SIGNAL);
 
                 int succ = gps.getData();
@@ -423,17 +446,3 @@
     }; 
 
 #endif
-
-
-
-/* 
-
-
-                int success = gps.getData();
-                if (success)
-                {
-                    // We got new data!
-                    // Update the information we need to control the boat 
-                    currentLoc.latitude = gps.data.position.latitude;
-                    currentLoc.longitude= gps.data.position.longitude;
-*/

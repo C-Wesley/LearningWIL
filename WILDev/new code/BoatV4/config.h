@@ -13,9 +13,9 @@
     /* =============
         Debug Flags
        ============= */
-    constexpr bool DEBUG_PRINT_GPS_DATA = true;
+    constexpr bool DEBUG_PRINT_GPS_DATA = false;
     constexpr bool DEBUG_PRINT_SD_LOG   = true;
-    constexpr bool DEBUG_PRINT_SERIAL   = true;
+    constexpr bool DEBUG_PRINT_SERIAL   = false;
 
     /* ================
         Path Constants
